@@ -26,7 +26,7 @@ gulp.task('sass', function() {
 // Pug (Html)
 gulp.task('pug', function() {
   return gulp.src('src/**/[!_]*.pug')
-    .pipe(pug({pretty: false}))
+    .pipe(pug({pretty: true}))
     .pipe(gulp.dest('dist/'))
     .pipe(browsersync.stream());
 });
