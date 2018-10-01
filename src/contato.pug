@@ -1,14 +1,16 @@
-doctype
+doctype html
 html
-  head
-  body#main
-    <link rel="import" href="header.html">
-    link(rel="stylesheet", href="css/style.css")
-    include html_inc/organisms/_header.pug
-    h1 Entre em contato
-    - for(i = 1; i <= 3; i++)
-      div(class="flag_"+i*10)
-        p.oi Parágrafo #{i*10}
-        span Algo não está certo 
-          <b>Eita pode sim</b>
-    p Nada não a 
+  include html_inc/page_partials/_head.pug
+    title Contato
+  body
+    include html_inc/page_partials/_header.pug
+
+    //- Page Content
+    #page-content
+      p Conteúdo de Contato
+
+    //- Page Content End
+
+    include html_inc/page_partials/_footer.pug
+    //- script(src='vendor/jquery/jquery.min.js')
+    script(src='js/all.js')

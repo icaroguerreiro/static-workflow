@@ -1,18 +1,23 @@
-doctype
+doctype html
 html
-  head
-  body#main
-    link(rel="import" href="header.html")
-    link(rel="stylesheet" href="css/style.css")
-    //include html_inc/organisms/_header.pug
-    div.animation-virgem
-      p Menu Virgemaaa Oi rapaz
-      ul.animation-virgem-elements
-        - for(i = 1; i <= 5; i++)
-          li Menu #{i}a
-      ul.animation-virgem-elements
-        - for(i = 1; i <= 3; i++)
-          li Menu #{i}b
+  include html_inc/page_partials/_head.pug
+    title Page Title
+  body
+    include html_inc/page_partials/_header.pug
 
-    script(src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous")
-    script(src="js/all.js")
+    //- Page Content
+    #page-content
+      .animation
+        p Menu Exemplo
+        ul.animation-elements
+          - for(i = 1; i <= 5; i++)
+            li Menu #{i}a
+        ul.animation-elements
+          - for(i = 1; i <= 3; i++)
+            li Menu #{i}b
+
+    //- Page Content End
+
+    include html_inc/page_partials/_footer.pug
+    //- script(src='vendor/jquery/jquery.min.js')
+    script(src='js/all.js')
