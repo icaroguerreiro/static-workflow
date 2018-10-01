@@ -1,0 +1,18 @@
+doctype
+html
+  head
+  body#main
+    link(rel="import" href="header.html")
+    link(rel="stylesheet" href="css/style.css")
+    //include html_inc/organisms/_header.pug
+    div.animation-virgem
+      p Menu Virgemaaa Oi rapaz
+      ul.animation-virgem-elements
+        - for(i = 1; i <= 5; i++)
+          li Menu #{i}a
+      ul.animation-virgem-elements
+        - for(i = 1; i <= 3; i++)
+          li Menu #{i}b
+
+    script(src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous")
+    script(src="js/all.js")

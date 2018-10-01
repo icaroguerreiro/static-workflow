@@ -1,0 +1,14 @@
+doctype
+html
+  head
+  body#main
+    <link rel="import" href="header.html">
+    link(rel="stylesheet", href="css/style.css")
+    include html_inc/organisms/_header.pug
+    h1 Entre em contato
+    - for(i = 1; i <= 3; i++)
+      div(class="flag_"+i*10)
+        p.oi Parágrafo #{i*10}
+        span Algo não está certo 
+          <b>Eita pode sim</b>
+    p Nada não a 
