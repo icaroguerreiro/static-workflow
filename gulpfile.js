@@ -1,14 +1,14 @@
 // Gulp Requires
-var gulp = require('gulp');
-var pug = require('gulp-pug');
-var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var watch = require('gulp-watch');
-var browsersync = require('browser-sync');
-var sourcemaps = require('gulp-sourcemaps');
-var copy = vendorcopy = require('gulp-copy');
+const gulp = require('gulp');
+const pug = require('gulp-pug');
+const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
+const watch = require('gulp-watch');
+const browsersync = require('browser-sync');
+const sourcemaps = require('gulp-sourcemaps');
+const copy = vendorcopy = require('gulp-copy');
 const pugIncludeGlob = require('pug-include-glob');
 
 
