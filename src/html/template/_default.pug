@@ -1,0 +1,24 @@
+include ../_starter.pug
+
+doctype html
+html
+  //- Head
+  head
+    include ../partial/_head.pug
+    block head
+  body(class= 'default')
+    //- Header
+    header#page-header
+      include ../partial/_header.pug
+
+    //- Content
+    #page-content
+      block content
+
+    //- Footer
+    footer#page-footer
+      include ../partial/_footer.pug
+
+    //- Scripts
+    include ../partial/_scripts.pug
+    block script

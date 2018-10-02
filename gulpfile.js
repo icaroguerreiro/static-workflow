@@ -9,6 +9,7 @@ var watch = require('gulp-watch');
 var browsersync = require('browser-sync');
 var sourcemaps = require('gulp-sourcemaps');
 var copy = vendorcopy = require('gulp-copy');
+const pugIncludeGlob = require('pug-include-glob');
 
 
 
@@ -26,7 +27,7 @@ gulp.task('sass', function() {
 // Pug (Html)
 gulp.task('pug', function() {
   return gulp.src('src/**/[!_]*.pug')
-    .pipe(pug({pretty: true}))
+    .pipe(pug({pretty: true, plugins: [pugIncludeGlob()] }))
     .pipe(gulp.dest('dist/'))
     .pipe(browsersync.stream());
 });
@@ -44,9 +45,9 @@ gulp.task('scripts', function() {
 
 // Watch
 gulp.task('watch', function() {
-  gulp.watch('src/css/**/[!_]*.sass', ['sass']);
-  gulp.watch('src/js/**/[!_]*.js', ['scripts']);
-  gulp.watch('src/**/[!_]*.pug', ['pug']);
+  gulp.watch('src/css/**/*.sass', ['sass']);
+  gulp.watch('src/js/**/*.js', ['scripts']);
+  gulp.watch('src/**/*.pug', ['pug']);
 });
 
 

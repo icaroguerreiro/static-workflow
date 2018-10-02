@@ -1,5 +1,17 @@
+# Project
 /dist
 /node_modules
+
+# Yarn
 yarn-error.log
-package-lock.json
 yarn.lock
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Mac
+.DS_Store
+.Spotlight-V100
+.Trashes
+._*
