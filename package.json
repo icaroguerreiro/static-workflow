@@ -17,6 +17,7 @@
     "sanitize.css": "^7.0.3"
   },
   "devDependencies": {
+    "gulp-sass-bulk-import": "^1.0.1",
     "pug-include-glob": "^0.3.3"
   }
 }

@@ -9,13 +9,15 @@ const watch = require('gulp-watch');
 const browsersync = require('browser-sync');
 const sourcemaps = require('gulp-sourcemaps');
 const copy = vendorcopy = require('gulp-copy');
-const pugIncludeGlob = require('pug-include-glob');
+const pugincludeglob = require('pug-include-glob');
+const bulksass = require('gulp-sass-bulk-import');
 
 
 
 // Sass + Autoprefixer + Sourcemap + Minify (Css)
 gulp.task('sass', function() {
   return gulp.src('src/css/**/[!_]*.sass')
+    .pipe(bulksass())
     .pipe(sourcemaps.init())
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(autoprefixer())
@@ -27,7 +29,7 @@ gulp.task('sass', function() {
 // Pug (Html)
 gulp.task('pug', function() {
   return gulp.src('src/**/[!_]*.pug')
-    .pipe(pug({pretty: true, plugins: [pugIncludeGlob()] }))
+    .pipe(pug({pretty: true, plugins: [pugincludeglob()] }))
     .pipe(gulp.dest('dist/'))
     .pipe(browsersync.stream());
 });
