@@ -47,6 +47,7 @@ gulp.task('scripts', function() {
 
 // Watch
 gulp.task('watch', function() {
+  // Just Files
   gulp.watch('src/css/**/*.sass', ['sass']);
   gulp.watch('src/js/**/*.js', ['scripts']);
   gulp.watch('src/**/*.pug', ['pug']);
