@@ -11,8 +11,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const copy = vendorcopy = require('gulp-copy');
 const pugincludeglob = require('pug-include-glob');
 const bulksass = require('gulp-sass-bulk-import');
-
-
+const imagemin = require('gulp-imagemin');
 
 // Sass + Autoprefixer + Sourcemap + Minify (Css)
 gulp.task('sass', function() {
@@ -45,11 +44,23 @@ gulp.task('scripts', function() {
     .pipe(browsersync.stream());
 });
 
+// Assets Copy & Image Soft Compress
+gulp.task('assets', function() {
+  // Copy Assets
+  gulp.src(['src/assets/**/*', '!src/assets/img/*'])
+      .pipe(gulp.dest('dist/assets/'));
+  // // Image Soft Compress
+  gulp.src('src/assets/img/*')
+      .pipe(imagemin())
+      .pipe(gulp.dest('dist/assets/img/'));
+});
+
 // Watch
 gulp.task('watch', function() {
   // Just Files
   gulp.watch('src/css/**/*.sass', ['sass']);
   gulp.watch('src/js/**/*.js', ['scripts']);
+  gulp.watch('src/assets/**/*', ['assets']);
   gulp.watch('src/**/*.pug', ['pug']);
 });
 
@@ -94,12 +105,10 @@ gulp.task('vendorsass', function() {
     .pipe(gulp.dest('dist/vendor/bootstrap/css/'));
 });
 
-
-
 // Browser Sync
 gulp.task('browsersync', function () {
   browsersync({server:{baseDir:'dist/'}})
 })
 
 // Gulp Default
-gulp.task('default', ['pug', 'sass', 'scripts', 'vendor', 'watch', 'browsersync']);
+gulp.task('default', ['pug', 'sass', 'scripts', 'assets', 'vendor', 'watch', 'browsersync']);
