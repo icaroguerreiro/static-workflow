@@ -7,22 +7,13 @@ block script
 
 //- Content
 block content
-  .container
-    .row
-      .col-md-6.bg-danger
-        p <b>Usuário:</b> #{user.name}
-      .col-md-6.bg-warning.text-right
-        p <b>Idade:</b> #{user.age}
-    .row
-      .col-md-12
-        h1 Olá #{user.name}
-        +bloco('bloco-borderless', 'http://google.com', 'Google', 'R$ 20.278,50')
-        +bloco('bloco-borderless', 'http://skype.com', 'Skype', 'R$ 1,00')
+  h1 Olá #{user.name}
+  +bloco('bloco-borderless', 'http://google.com', 'Google', 'R$ 20.278,50')
 
-        ul
-          - const menus = [["Home", "index.html"],["Quem Somos", "sobre.html"],["Contato", "contato.html"]]
-            each menu, i in menus
-              li
-                a(href= menu[1] ) #{menu[0]}
-            else
-              p No values
+  ul
+    - const menus = [["Home", "index.html"],["Quem Somos", "sobre.html"],["Contato", "contato.html"]]
+      each menu, i in menus
+        li
+          a(href= menu[1] ) #{menu[0]}
+      else
+        p No values
