@@ -7,13 +7,4 @@ block script
 
 //- Content
 block content
-  h1 Olá #{user.name}
-  +bloco('bloco-borderless', 'http://google.com', 'Google', 'R$ 20.278,50')
-
-  ul
-    - const menus = [["Home", "index.html"],["Quem Somos", "sobre.html"],["Contato", "contato.html"]]
-      each menu, i in menus
-        li
-          a(href= menu[1] ) #{menu[0]}
-      else
-        p No values
+  
