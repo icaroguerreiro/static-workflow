@@ -12,6 +12,7 @@ const copy = vendorcopy = require('gulp-copy');
 const pugincludeglob = require('pug-include-glob');
 const bulksass = require('gulp-sass-bulk-import');
 const imagemin = require('gulp-imagemin');
+const babel = require('gulp-babel');
 
 // Sass + Autoprefixer + Sourcemap + Minify (Css)
 gulp.task('sass', function() {
@@ -36,6 +37,9 @@ gulp.task('pug', function() {
 // Concat + Sourcemap + Uglify (Javascript)
 gulp.task('scripts', function() {
   return gulp.src('src/js/**/[!_]*.js')
+    .pipe(babel({
+      presets: ['@babel/env']
+    }))
     .pipe(sourcemaps.init())
     .pipe(concat('all.js'))
     .pipe(uglify())
