@@ -111,7 +111,7 @@ gulp.task('vendorsass', function() {
 
 // Browser Sync
 gulp.task('browsersync', function () {
-  browsersync({server:{baseDir:'dist/'}})
+  browsersync({server:{baseDir:'dist/'}, open: false})
 })
 
 // Gulp Default
