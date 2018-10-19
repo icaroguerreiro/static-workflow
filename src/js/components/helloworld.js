@@ -1,3 +1,2 @@
-const name = 'John Doe'
-
-console.log(`🚀 Olá ${name}, estamos usando ES6.`)
+const name = 'None'
+console.log(`%c👽 Hello ${name}!`, "font-size:1.5em")
