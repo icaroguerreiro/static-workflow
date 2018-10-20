@@ -1,0 +1,1 @@
+- Friendly URL and Support multiple .extensions and default is .html (Using Hash Nav?) (Terá 404?)

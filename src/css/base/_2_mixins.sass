@@ -18,6 +18,18 @@
   overflow: hidden
   text-overflow: ellipsis
 
+// Media Query
+=mq($point: md)
+  @if $point == lg
+    @media (max-width: $grid-break-lg)
+      @content
+  @else if $point == md
+    @media (max-width: $grid-break-md)
+      @content
+  @else if $point == sm
+    @media (max-width: $grid-break-sm)
+      @content
+
 // Font Awesome | +font-awesome("\f2b9", "after", 10px)
 =font-awesome($ico: "\f2b4", $pos: "before", $margin: 10px)
   font-family: FontAwesome
