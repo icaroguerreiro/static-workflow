@@ -1,0 +1,7 @@
+// Scale Light
+@function scale-light($color, $amount) 
+  @return scale-color($color, $lightness: $amount)
+
+// Scale Saturation
+@function scale-saturation($color, $amount) 
+  @return scale-color($color, $saturation: $amount)

@@ -1,0 +1,30 @@
+// Placeholder | +placeholder
+=placeholder
+  &.placeholder 
+    @content;
+  &:-moz-placeholder 
+    @content;
+  &::-moz-placeholder 
+    @content;
+  &:-ms-input-placeholder 
+    @content;
+  &::-webkit-input-placeholder 
+    @content;
+  
+// Truncate Text | +truncate(200px)
+=truncate($max-width: 200px) 
+  max-width: $max-width
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+// Font Awesome | +font-awesome("\f2b9", "after", 10px)
+=font-awesome($ico: "\f2b4", $pos: "before", $margin: 10px)
+  font-family: FontAwesome
+  &:#{$pos}
+    content: $ico
+    display: inline-block
+    @if ($pos == 'before')
+      margin-right: $margin
+    @else if ($pos == 'after')
+      margin-left: $margin
