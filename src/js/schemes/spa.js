@@ -2,7 +2,7 @@ const navegateSPA = (hash, loadHash = false) => {
   if(!hash) return false
 
   var url
-  (hash == '#/' || !hash) ? url = 'home.html' : url = hash.substr(2)+'.html'
+  (hash == '#/' || hash == '#/index' || !hash) ? url = 'home.html' : url = hash.substr(2)+'.html'
   fetch(url)
     .then(resp => resp.text())
     .then(html => {
