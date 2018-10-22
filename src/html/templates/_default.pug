@@ -9,7 +9,8 @@ html
   body(class= 'default')
     //- Header
     header#page-header
-      include ../partials/_header.pug
+      block header
+        include ../partials/_header.pug
 
     //- Content
     #page-content
@@ -17,7 +18,8 @@ html
 
     //- Footer
     footer#page-footer
-      include ../partials/_footer.pug
+      block footer
+        include ../partials/_footer.pug
 
     //- Scripts
     include ../partials/_scripts.pug

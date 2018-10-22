@@ -1,35 +1,34 @@
-const navegateSPA = (url, selector, push = true) => {
-  
-  if(!url || !selector) return false
-  const selectors = selector.split(/[\s,]+/)
+const navegateSPA = (hash, loadHash = false) => {
+  if(!hash) return false
 
-  selectors.forEach((selectorItem) => {
-    const el = document.querySelector(selectorItem)
-    fetch(url)
-      .then(resp => resp.text())
-      .then(html => {
-        let parser = new DOMParser();
-        let doc = parser.parseFromString(html, "text/html");
-        let docSelector = doc.querySelector(selectorItem).innerHTML
-        el.innerHTML = docSelector
-      })
-  })
-
-  if(push)
-    history.pushState({selector}, null, url)
+  var url
+  (hash == '#/' || !hash) ? url = 'home.html' : url = hash.substr(2)+'.html'
+  fetch(url)
+    .then(resp => resp.text())
+    .then(html => {
+      let parser = new DOMParser()
+      let doc = parser.parseFromString(html, 'text/html')
+      if(!loadHash) {
+        let selectors = doc.querySelector('[spa-selector]').attributes['spa-selector'].value.split(' ')
+        selectors.push('title'); 
+        selectors.forEach((selectorItem) => {
+          let docSelectorTEXT = doc.querySelector(selectorItem).innerHTML
+          let selectorDOM = document.querySelector(selectorItem)
+          selectorDOM.innerHTML = docSelectorTEXT
+        })
+      } else {
+        let docSelectorTEXT = doc.querySelector('html').innerHTML
+        let selectorDOM = document.querySelector('html')
+        selectorDOM.innerHTML = docSelectorTEXT
+      }
+    })
 }
 
-document.querySelectorAll('[spa-href]').forEach(link => {
-  const url = link.attributes['spa-href'].value
-  const selector = link.attributes['spa-selector'].value
+const loadHashUrl = (loadHash) => {
+  location.hash ? loadHash = location.hash : loadHash = '#/'
+  navegateSPA(loadHash, true)
+}; loadHashUrl()
 
-  link.onclick = e => {
-    e.preventDefault()
-    navegateSPA(url, selector)
-  }
-})
-
-window.onpopstate = e => {
-  if(e.state) 
-    navegateSPA(window.location.href, e.state.selector, false)
+window.onhashchange = e => {
+  navegateSPA(location.hash)
 }
