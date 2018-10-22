@@ -10,11 +10,16 @@ const navegateSPA = (hash, loadHash = false) => {
       let doc = parser.parseFromString(html, 'text/html')
       if(!loadHash) {
         let selectors = doc.querySelector('[spa-selector]').attributes['spa-selector'].value.split(' ')
-        selectors.push('title'); 
+        selectors.push('title', 'meta[name="description"]'); 
         selectors.forEach((selectorItem) => {
           let docSelectorTEXT = doc.querySelector(selectorItem).innerHTML
           let selectorDOM = document.querySelector(selectorItem)
-          selectorDOM.innerHTML = docSelectorTEXT
+          if(doc && docSelectorTEXT) {
+            selectorDOM.innerHTML = docSelectorTEXT
+          } else if(doc && !docSelectorTEXT) {
+            let docSelectorTEXT = doc.querySelector(selectorItem)
+            selectorDOM.parentNode.replaceChild(docSelectorTEXT, selectorDOM);
+          }
         })
       } else {
         let docSelectorTEXT = doc.querySelector('html').innerHTML
@@ -23,7 +28,7 @@ const navegateSPA = (hash, loadHash = false) => {
       }
     })
 }
-
+ 
 const loadHashUrl = (loadHash) => {
   location.hash ? loadHash = location.hash : loadHash = '#/'
   navegateSPA(loadHash, true)

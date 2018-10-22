@@ -1,3 +1,3 @@
 - 404
-- Passar o meta e descriptions do head
 - Testar problemas com SPA SEO
+- Comparar o spa-selector da página atual com o da pagina anterior pra remover oq nao for da nova página
