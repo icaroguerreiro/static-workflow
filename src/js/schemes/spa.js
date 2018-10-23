@@ -2,7 +2,7 @@ const navegationSPA = (hash, loadHash = false) => {
   if(!hash) return false
 
   var url
-  (hash == '#index' || !hash) ? url = 'home.html' : url = hash.substr(1)+'.html'
+  (hash == '#index' || !hash) ? url = 'home.html' : url = `${hash.substr(1)}.html`
 
   const insertPromisesDOM = (html) => {
     let parser = new DOMParser()
@@ -49,7 +49,6 @@ const loadHashUrl = (loadHash) => {
   location.hash ? loadHash = location.hash : loadHash = '#index'
   navegationSPA(loadHash, true)
 }; loadHashUrl()
-
 
 window.onhashchange = e => {
   navegationSPA(location.hash)

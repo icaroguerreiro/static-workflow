@@ -1,8 +1,9 @@
 - Testar problemas com SPA SEO
 - Estudar metadados para seo e aplicar no boilerplate
 - Comparar o spa-selector da página atual com o da pagina anterior pra remover oq nao for da nova página
+- COlocar os meta e title pelo spa-selector e nao direto no codigo
 
 ESTUDAR
   Promises
   Callback
-  
+  var, const, let
