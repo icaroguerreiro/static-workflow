@@ -1,7 +1,7 @@
 const navegationSPA = (hash, loadHash = false) => {
   if(!hash) return false
 
-  var url
+  let url
   (hash == '#index' || !hash) ? url = 'home.html' : url = `${hash.substr(1)}.html`
 
   const insertPromisesDOM = (html) => {
@@ -42,7 +42,7 @@ const navegationSPA = (hash, loadHash = false) => {
     .then(html => {
       if(html) insertPromisesDOM(html)
     })
-    .catch(e => console.log(e))
+  .catch(e => console.log(e))
 }
  
 const loadHashUrl = (loadHash) => {
