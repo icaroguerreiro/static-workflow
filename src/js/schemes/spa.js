@@ -1,39 +1,56 @@
-const navegateSPA = (hash, loadHash = false) => {
+const navegationSPA = (hash, loadHash = false) => {
   if(!hash) return false
 
   var url
-  (hash == '#/' || hash == '#/index' || !hash) ? url = 'home.html' : url = hash.substr(2)+'.html'
+  (hash == '#index' || !hash) ? url = 'home.html' : url = hash.substr(1)+'.html'
+
+  const insertPromisesDOM = (html) => {
+    let parser = new DOMParser()
+    let doc = parser.parseFromString(html, 'text/html')
+    if(!loadHash) {
+      let selectors = doc.querySelector('[spa-selector]').attributes['spa-selector'].value.split(' ')
+      selectors.push('title', 'meta[name="description"]'); 
+      selectors.forEach((selectorItem) => {
+        let docSelectorTEXT = doc.querySelector(selectorItem).innerHTML
+        let selectorDOM = document.querySelector(selectorItem)
+        if(doc && docSelectorTEXT) {
+          selectorDOM.innerHTML = docSelectorTEXT
+        } else if(doc && !docSelectorTEXT) {
+          let docSelectorTEXT = doc.querySelector(selectorItem)
+          selectorDOM.parentNode.replaceChild(docSelectorTEXT, selectorDOM);
+        }
+      })
+    } else {
+      let docSelectorTEXT = doc.querySelector('html').innerHTML
+      let selectorDOM = document.querySelector('html')
+      selectorDOM.innerHTML = docSelectorTEXT
+    }
+  }
+  
   fetch(url)
-    .then(resp => resp.text())
-    .then(html => {
-      let parser = new DOMParser()
-      let doc = parser.parseFromString(html, 'text/html')
-      if(!loadHash) {
-        let selectors = doc.querySelector('[spa-selector]').attributes['spa-selector'].value.split(' ')
-        selectors.push('title', 'meta[name="description"]'); 
-        selectors.forEach((selectorItem) => {
-          let docSelectorTEXT = doc.querySelector(selectorItem).innerHTML
-          let selectorDOM = document.querySelector(selectorItem)
-          if(doc && docSelectorTEXT) {
-            selectorDOM.innerHTML = docSelectorTEXT
-          } else if(doc && !docSelectorTEXT) {
-            let docSelectorTEXT = doc.querySelector(selectorItem)
-            selectorDOM.parentNode.replaceChild(docSelectorTEXT, selectorDOM);
-          }
-        })
+    .then(response => {
+      if (response.ok) {
+        return response.text();
       } else {
-        let docSelectorTEXT = doc.querySelector('html').innerHTML
-        let selectorDOM = document.querySelector('html')
-        selectorDOM.innerHTML = docSelectorTEXT
+        fetch('404.html')
+          .then(response => response.text())
+          .then(html => {
+            if(html) insertPromisesDOM(html)
+          })
       }
     })
+    .then(html => {
+      if(html) insertPromisesDOM(html)
+    })
+    .catch(e => console.log(e))
 }
  
 const loadHashUrl = (loadHash) => {
-  location.hash ? loadHash = location.hash : loadHash = '#/'
-  navegateSPA(loadHash, true)
+  location.hash ? loadHash = location.hash : loadHash = '#index'
+  navegationSPA(loadHash, true)
 }; loadHashUrl()
 
+
 window.onhashchange = e => {
-  navegateSPA(location.hash)
+  navegationSPA(location.hash)
 }
