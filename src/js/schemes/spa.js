@@ -4,7 +4,7 @@ const navegationSPA = (hash, loadHash = false) => {
   let url
   (hash == '#index' || !hash) ? url = 'home.html' : url = `${hash.substr(1)}.html`
 
-  const insertPromisesDOM = (html) => {
+  const insertPromisesDOM = html => {
     let parser = new DOMParser()
     let doc = parser.parseFromString(html, 'text/html')
     if(!loadHash) {
@@ -25,6 +25,7 @@ const navegationSPA = (hash, loadHash = false) => {
       let selectorDOM = document.querySelector('html')
       selectorDOM.innerHTML = docSelectorTEXT
     }
+    activeAnchors(hash)
   }
   
   fetch(url)
@@ -37,6 +38,7 @@ const navegationSPA = (hash, loadHash = false) => {
           .then(html => {
             if(html) insertPromisesDOM(html)
           })
+      .catch(e => console.log(e))
       }
     })
     .then(html => {
@@ -44,8 +46,15 @@ const navegationSPA = (hash, loadHash = false) => {
     })
   .catch(e => console.log(e))
 }
+
+const activeAnchors = hash => {
+  let allAnchors = document.querySelectorAll(`[href]`)
+  allAnchors.forEach(o => {
+    o.getAttribute('href') == hash ? o.classList.add('-active') : o.classList.remove('-active')
+  })
+};
  
-const loadHashUrl = (loadHash) => {
+const loadHashUrl = loadHash => {
   location.hash ? loadHash = location.hash : loadHash = '#index'
   navegationSPA(loadHash, true)
 }; loadHashUrl()
