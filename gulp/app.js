@@ -41,7 +41,8 @@ gulp.task('app-html', () => {
 
 // app-js
 gulp.task('app-js', () => {
-  gulp.src('src/js/**/[!_]*.js')
+  // Bundle
+  gulp.src('src/js/bundle/**/[!_]*.js')
     .pipe(sourcemaps.init())
     .pipe(babel({
       minified: true,
@@ -52,6 +53,17 @@ gulp.task('app-js', () => {
     .pipe(concat('all.js'))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist/js/'));
+  // Singles
+  gulp.src('src/js/singles/**/[!_]*.js')
+    .pipe(sourcemaps.init())
+    .pipe(babel({
+      minified: true,
+      comments : false,
+      presets: ['@babel/env']
+    }))
+    .on('error', (err) => console.log(err))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('dist/js/singles/'));
 });
 
 // app-assets

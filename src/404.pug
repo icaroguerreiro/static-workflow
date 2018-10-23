@@ -2,8 +2,9 @@ extends html/templates/_default.pug
 block head
   title 404
   meta(name='description' content='404')
-  meta(spa-selector='title meta[name="description"] #page-content')
-block script
+  link(rel='canonical' href='404.html')
+  meta(spa-selector='title meta[name="description"] link[rel="canonical"] #page-content')
+prepend script
   script.
 
 //- Content

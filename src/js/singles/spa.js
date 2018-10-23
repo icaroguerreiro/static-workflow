@@ -3,13 +3,13 @@ const navegationSPA = (hash, loadHash = false) => {
 
   let url
   (hash == '#index' || !hash) ? url = 'home.html' : url = `${hash.substr(1)}.html`
-
   const insertPromisesDOM = html => {
     let parser = new DOMParser()
     let doc = parser.parseFromString(html, 'text/html')
     if(!loadHash) {
       let selectors = doc.querySelector('[spa-selector]').attributes['spa-selector'].value.split(' ')
-      // selectors.push('title', 'meta[name="description"]'); 
+      // selectors.push('title', 'meta[name="description"]');  
+
       selectors.forEach(selectorItem => {
         let docSelectorTEXT = doc.querySelector(selectorItem).innerHTML
         let selectorDOM = document.querySelector(selectorItem)

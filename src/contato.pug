@@ -2,8 +2,9 @@ extends html/templates/_default.pug
 block head
   title Contatinho
   meta(name='description' content='Descrição Contato')
-  meta(spa-selector='title meta[name="description"] #page-content')
-block script
+  link(rel='canonical' href='contato.html')
+  meta(spa-selector='title meta[name="description"] link[rel="canonical"] #page-content')
+prepend script
   script.
 
 //- Content

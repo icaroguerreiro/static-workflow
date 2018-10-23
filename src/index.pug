@@ -1,13 +1,12 @@
 extends html/templates/_default.pug
 block header
-  //- 
 block footer
-  //- 
 block content
-  //- 
 block head
   title ...
   meta(name='description' content='...')
   meta(name='robots' content='noindex')
-block script
+prepend script
   script.
+prepend script
+  script(src='js/singles/spa.js')
