@@ -9,8 +9,8 @@ const navegationSPA = (hash, loadHash = false) => {
     let doc = parser.parseFromString(html, 'text/html')
     if(!loadHash) {
       let selectors = doc.querySelector('[spa-selector]').attributes['spa-selector'].value.split(' ')
-      selectors.push('title', 'meta[name="description"]'); 
-      selectors.forEach((selectorItem) => {
+      // selectors.push('title', 'meta[name="description"]'); 
+      selectors.forEach(selectorItem => {
         let docSelectorTEXT = doc.querySelector(selectorItem).innerHTML
         let selectorDOM = document.querySelector(selectorItem)
         if(doc && docSelectorTEXT) {

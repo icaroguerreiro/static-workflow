@@ -2,7 +2,7 @@ extends html/templates/_default.pug
 block head
   title 404
   meta(name='description' content='404')
-  meta(spa-selector='#page-content')
+  meta(spa-selector='title meta[name="description"] #page-content')
 block script
   script.
 
@@ -10,4 +10,3 @@ block script
 block content
   //- h1 - "404...<b>nada</b> aqui!" 🤐
   h6 404
-  
