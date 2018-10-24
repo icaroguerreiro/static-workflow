@@ -1,0 +1,24 @@
+doctype html
+html
+  //- Head
+  head
+    include ./layout/partials/_head.pug
+    block head
+  body(class= 'default')
+    //- Header
+    header#page-header
+      block header
+        include ./layout/partials/_header.pug
+
+    //- Content
+    #page-content
+      block content
+
+    //- Footer
+    footer#page-footer
+      block footer
+        include ./layout/partials/_footer.pug
+
+    //- Scripts
+    block script
+      include ./layout/partials/_scripts.pug

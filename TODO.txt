@@ -1,9 +1,19 @@
-BOILERPLATE
+﻿BOILERPLATE
   Testar problemas com SPA SEO
   Estudar metadados para seo e aplicar no boilerplate
   Comparar o spa-selector da página atual com o da pagina anterior pra remover oq nao for da nova página
   Organizar pastas de js/css/html_mixins em componentes
   mudar o hash para .html qnd usar navegação normal (de-hash)
+  como existe o _ para ignorar o build desse arquivo, criar um prefixo para arquivos que nao vao para o bundler.
+  acho que nao precisa mais dos *glob para sass
+  @import no sanitize com problemas
+  e components nao ta indo pro style.css bundle
+  uglify pra deixar css e js menores ainda
+  autoprefixer nao está funcionando
+  normalize nao está sendo incluso
+  ajeitar a pasta do @single js que ta vindo com schemes e blablabla e sem o .min, é pra vim com o .min?
+  testar sourcemap do css
+  criar exemplos de mixins do pug: botoes por exemplo
 
 ESTUDAR
   módulo javascript (FUndamentos, Estrutura, Funçao, Objetos, Array)
