@@ -3,6 +3,7 @@ BOILERPLATE
   Estudar metadados para seo e aplicar no boilerplate
   Comparar o spa-selector da página atual com o da pagina anterior pra remover oq nao for da nova página
   Organizar pastas de js/css/html_mixins em componentes
+  mudar o hash para .html qnd usar navegação normal (de-hash)
 
 ESTUDAR
   módulo javascript (FUndamentos, Estrutura, Funçao, Objetos, Array)
