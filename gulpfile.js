@@ -17,7 +17,7 @@ gulp.task('app', ['app-css', 'app-js', 'app-html', 'app-assets', 'app-watch'])
 
 // app-css
 gulp.task('app-css', () => {
-  gulp.src(['src/core/css/style.sass', 'src/layout/css/**/[!_]*.sass', 'src/components/**/[!_]*.sass'])
+  gulp.src(['src/core/css/thirds.sass', 'src/core/css/style.sass', 'src/layout/css/**/[!_]*.sass', 'src/components/**/[!_]*.sass'])
     .pipe(sourcemaps.init())
       .pipe(sass())
       .pipe(autoprefixer())
