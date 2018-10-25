@@ -1,6 +1,7 @@
 // Gulp Requires
 const gulp = require('gulp');
 const pug = require('gulp-pug')
+const pugGlob = require('pug-include-glob');
 const sass = require('gulp-sass')
 const babel = require('gulp-babel')
 const concat = require('gulp-concat')
@@ -60,7 +61,8 @@ gulp.task('app-js', () => {
 gulp.task('app-html', () => {
   gulp.src('src/**/[!_]*.pug')
     .pipe(pug({
-      pretty: false
+      pretty: false,
+      plugins: [pugGlob()] 
     }))
     .pipe(gulp.dest('dist/'))
     .on('error', (err) => console.log(err))

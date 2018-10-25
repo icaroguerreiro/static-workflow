@@ -21,6 +21,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
     "gulp-uglifycss": "^1.1.0",
-    "gulp-watch": "^5.0.1"
+    "gulp-watch": "^5.0.1",
+    "pug-include-glob": "^0.3.3"
   }
 }
