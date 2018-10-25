@@ -3,7 +3,6 @@
   Estudar metadados para seo e aplicar no boilerplate
   Comparar o spa-selector da página atual com o da pagina anterior pra remover oq nao for da nova página
   mudar o hash para .html qnd usar navegação normal (de-hash)
-  @import no sanitize com problemas, normalize nao está sendo incluso
   criar exemplos de mixins do pug: botoes por exemplo
   criar prefixo para arquivos que sao duplicados no bundler, mas existirá o render puro tbm (para enviar para backend)
   criar o @spa da navegação sem hash
