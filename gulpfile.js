@@ -44,7 +44,7 @@ gulp.task('app-js', () => {
   gulp.src(['src/core/js/**/[@]*.js','src/components/**/[@]*.js'])
   .pipe(sourcemaps.init())
   .pipe(babel({ presets: ['@babel/env'] }))
-  // .pipe(uglify())
+  .pipe(uglify())
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest('dist/core/js'))
   .on('error', (err) => console.log(err))
