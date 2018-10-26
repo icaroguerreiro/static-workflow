@@ -50,7 +50,7 @@ gulp.task('app-js', () => {
   .pipe(gulp.dest('dist/core/js'))
   .on('error', (err) => console.log(err))
 
-  // Duplicates (to send for Others)
+  // Duplicates
   gulp.src(['src/core/js/**/[#]*.js','src/components/**/[#]*.js'])
   .pipe(babel({ presets: ['@babel/env'] }))
   .pipe(gulp.dest('dist/core/js'))
