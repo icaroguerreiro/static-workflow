@@ -54,10 +54,10 @@ const activeAnchors = hash => {
   })
 };
  
-const loadHashUrl = loadHash => {
+(function loadHashUrl(loadHash) {
   location.hash ? loadHash = location.hash : loadHash = '#index'
   navegationSPA(loadHash, true)
-}; loadHashUrl()
+})()
 
 window.onhashchange = e => {
   navegationSPA(location.hash)

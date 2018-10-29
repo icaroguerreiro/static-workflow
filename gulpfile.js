@@ -1,17 +1,17 @@
 // Gulp Requires
-const gulp = require('gulp');
+const gulp = require('gulp')
 const pug = require('gulp-pug')
-const pugGlob = require('pug-include-glob');
+const pugGlob = require('pug-include-glob')
 const sass = require('gulp-sass')
 const babel = require('gulp-babel')
 const concat = require('gulp-concat')
 const sourcemaps = require('gulp-sourcemaps')
 const autoprefixer = require('gulp-autoprefixer')
-const cleanCSS = require('gulp-clean-css');
-const uglify = require('gulp-uglify');
+const cleanCSS = require('gulp-clean-css')
+const uglify = require('gulp-uglify')
 const imagemin = require('gulp-imagemin')
 const watch = require('gulp-watch')
-const browsersync = require('browser-sync');
+const browsersync = require('browser-sync')
 
 // app
 gulp.task('app', ['app-css', 'app-js', 'app-html', 'app-assets', 'app-watch'])
