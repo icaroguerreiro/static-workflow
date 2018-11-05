@@ -6,7 +6,7 @@
   criar o @spa da navegação sem hash
 
 ESTUDAR
-  módulo javascript (FUndamentos, Estrutura, Funçao, Objetos, Array)
+  módulo javascript (Objetos, Array)
   módulo de node
 
   receber conteúdo do wordpress ao postar ou update e gerar páginas html estáticas de tempo em tempo

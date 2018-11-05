@@ -3,6 +3,7 @@ const gulp = require('gulp')
 const pug = require('gulp-pug')
 const pugGlob = require('pug-include-glob')
 const sass = require('gulp-sass')
+const sassGlob = require('gulp-sass-glob');
 const babel = require('gulp-babel')
 const concat = require('gulp-concat')
 const sourcemaps = require('gulp-sourcemaps')
@@ -13,12 +14,17 @@ const imagemin = require('gulp-imagemin')
 const watch = require('gulp-watch')
 const browsersync = require('browser-sync')
 
+// No Minify! (WIP)
+const isPretty = process.argv.indexOf('--pretty') !== -1
+if(isPretty) console.log('😻😻😻😻😻\n')
+
 // app
 gulp.task('app', ['app-css', 'app-js', 'app-html', 'app-assets', 'app-watch'])
 
 // app-css
 gulp.task('app-css', () => {
-  gulp.src(['src/core/css/thirds.sass', 'src/core/css/style.sass', 'src/layout/css/**/[!_]*.sass', 'src/components/**/[!_]*.sass'])
+  gulp.src(['src/core/css/thirds.sass', 'src/core/css/style.sass'])
+    .pipe(sassGlob())
     .pipe(sourcemaps.init())
       .pipe(sass())
       .pipe(autoprefixer())
@@ -70,9 +76,9 @@ gulp.task('app-html', () => {
 
 // app-assets
 gulp.task('app-assets', () => {
-  gulp.src(['src/assets/**/*', '!src/assets/img/*'])
+  gulp.src(['src/assets/**/*.*', '!src/assets/img/*.*'])
     .pipe(gulp.dest('dist/assets/'))
-  gulp.src('src/assets/img/**/*')
+  gulp.src('src/assets/img/**/*.*')
     .pipe(imagemin())
     .pipe(gulp.dest('dist/assets/img/'))
 })
@@ -88,8 +94,8 @@ gulp.task('app-watch', () => {
 // vendor
 gulp.task('vendor-copy', () => {
   // jQuery
-  gulp.src('node_modules/jquery/dist/jquery.min.js')
-    .pipe(gulp.dest('dist/vendor/jquery/'));
+  // gulp.src('node_modules/jquery/dist/jquery.min.js')
+  //   .pipe(gulp.dest('dist/vendor/jquery/'));
   // Font-Awesome
   gulp.src([
     'node_modules/font-awesome/**/font-awesome.min.css',
