@@ -6,9 +6,6 @@
   criar o @spa da navegação sem hash
 
 ESTUDAR
-  módulo javascript (Objetos, Array)
-  módulo de node
-
   receber conteúdo do wordpress ao postar ou update e gerar páginas html estáticas de tempo em tempo
   aprender a usar o cache do cloudflare
   aprender como funciona o sistema de cdn
