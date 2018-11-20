@@ -1,22 +1,18 @@
-// Gulp Requires
+// gulp
 const gulp = require('gulp')
 const pug = require('gulp-pug')
 const pugGlob = require('pug-include-glob')
 const sass = require('gulp-sass')
-const sassGlob = require('gulp-sass-glob');
-const babel = require('gulp-babel')
-const concat = require('gulp-concat')
-const sourcemaps = require('gulp-sourcemaps')
+const sassGlob = require('gulp-sass-glob')
 const autoprefixer = require('gulp-autoprefixer')
 const cleanCSS = require('gulp-clean-css')
+const babel = require('gulp-babel')
 const uglify = require('gulp-uglify')
+const concat = require('gulp-concat')
+const sourcemaps = require('gulp-sourcemaps')
 const imagemin = require('gulp-imagemin')
 const watch = require('gulp-watch')
 const browsersync = require('browser-sync')
-
-// No Minify! (WIP)
-const isPretty = process.argv.indexOf('--pretty') !== -1
-if(isPretty) console.log('😻😻😻😻😻\n')
 
 // app
 gulp.task('app', ['app-css', 'app-js', 'app-html', 'app-assets', 'app-watch'])
@@ -49,18 +45,18 @@ gulp.task('app-js', () => {
 
   // Singles
   gulp.src(['src/core/js/**/[@]*.js','src/components/**/[@]*.js'])
-  .pipe(sourcemaps.init())
-  .pipe(babel({ presets: ['@babel/env'] }))
-  .pipe(uglify())
-  .pipe(sourcemaps.write('.'))
-  .pipe(gulp.dest('dist/core/js'))
-  .on('error', (err) => console.log(err))
+    .pipe(sourcemaps.init())
+    .pipe(babel({ presets: ['@babel/env'] }))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('dist/core/js'))
+    .on('error', (err) => console.log(err))
 
   // Duplicates
   gulp.src(['src/core/js/**/[#]*.js','src/components/**/[#]*.js'])
-  .pipe(babel({ presets: ['@babel/env'] }))
-  .pipe(gulp.dest('dist/core/js'))
-  .on('error', (err) => console.log(err))
+    .pipe(babel({ presets: ['@babel/env'] }))
+    .pipe(gulp.dest('dist/core/js'))
+    .on('error', (err) => console.log(err))
 })
 
 // app-html

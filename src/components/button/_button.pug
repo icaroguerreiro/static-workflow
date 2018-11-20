@@ -1,2 +1,6 @@
-mixin button(_href, _text, _class = '')
-  a.btn(class= `btn ${_class}` href=_href) #{_text}
+mixin button(_href, _class = '')
+  a.btn(class= `btn ${_class}` href=_href)
+    if block
+      block
+    else
+      span Botão
