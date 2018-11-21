@@ -4,6 +4,7 @@
   Comparar o spa-selector da página atual com o da pagina anterior pra remover oq nao for da nova página
   mudar o hash para .html qnd usar navegação normal (de-hash)
   criar o @spa da navegação sem hash
+  criar build com componentes separados sem minificar em outra pasta fora do dist
 
 ESTUDAR
   receber conteúdo do wordpress ao postar ou update e gerar páginas html estáticas de tempo em tempo

@@ -61,7 +61,7 @@ gulp.task('app-js', () => {
 
 // app-html
 gulp.task('app-html', () => {
-  gulp.src('src/**/[!_]*.pug')
+  gulp.src(['src/**/[!_]*.pug', '!src/components/**/*.pug'])
     .pipe(pug({
       pretty: false,
       plugins: [pugGlob()] 
