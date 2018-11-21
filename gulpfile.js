@@ -81,7 +81,7 @@ gulp.task('app-assets', () => {
 
 // app-watch
 gulp.task('app-watch', () => {
-  gulp.watch(['src/core/css/**/*.sass', 'src/layout/css/**/*.sass', 'src/components/**/*.sass'], ['app-css'])
+  gulp.watch(['src/core/css/**/*.sass', 'src/components/**/*.sass'], ['app-css'])
   gulp.watch(['src/core/js/**/*.js','src/components/**/*.js'], ['app-js'])
   gulp.watch('src/assets/**/*', ['app-assets'])
   gulp.watch('src/**/*.pug', ['app-html'])

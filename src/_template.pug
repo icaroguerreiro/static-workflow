@@ -1,16 +1,15 @@
-include ./components/*.pug
 
 doctype html
 html
   //- Head
   head
-    include ./layout/partials/_head.pug
+    include ./_head
     block head
   body(class= 'default')
     //- Header
     header#page-header
       block header
-        include ./layout/partials/_header.pug
+        include ./components/header/header
 
     //- Content
     #page-content
@@ -19,8 +18,8 @@ html
     //- Footer
     footer#page-footer
       block footer
-        include ./layout/partials/_footer.pug
+        include ./components/footer/footer
 
     //- Scripts
     block script
-      include ./layout/partials/_scripts.pug
+      include ./_scripts
