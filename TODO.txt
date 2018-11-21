@@ -5,6 +5,7 @@
   mudar o hash para .html qnd usar navegação normal (de-hash)
   criar o @spa da navegação sem hash
   criar build com componentes separados sem minificar em outra pasta fora do dist
+  Fazer um rendering/loader page bonito (Usando o esquema de Critical Rendering Path)
 
 ESTUDAR
   receber conteúdo do wordpress ao postar ou update e gerar páginas html estáticas de tempo em tempo

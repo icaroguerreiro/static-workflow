@@ -85,6 +85,7 @@ gulp.task('app-watch', () => {
   gulp.watch(['src/core/js/**/*.js','src/components/**/*.js'], ['app-js'])
   gulp.watch('src/assets/**/*', ['app-assets'])
   gulp.watch('src/**/*.pug', ['app-html'])
+  gulp.watch('src/core/css/critical.sass', ['app-html'])
 })
 
 // vendor
