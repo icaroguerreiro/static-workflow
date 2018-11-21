@@ -3,7 +3,15 @@ doctype html
 html
   //- Head
   head
+    //- Critical Rendering Path Stylesheet
+    //- style#rc-single
+    //-   block critical
+    //-     :sass
+    style#rc-general
+      include:sass ./core/css/critical.sass
+    //- Template Head
     include ./_head
+    //- Custom Page Head
     block head
   body(class= 'default')
     //- Header
@@ -21,5 +29,5 @@ html
         include ./components/footer/footer
 
     //- Scripts
+    include ./_scripts
     block script
-      include ./_scripts
