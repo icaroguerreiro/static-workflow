@@ -1,14 +1,27 @@
+
 const navegationSPA = (hash, loadHash = false) => {
   if(!hash) return false
 
+  const urlExtension = '.html'
+
   let url
-  (hash == '#!index' || !hash) ? url = 'home.html' : url = `${hash.split('#!')[1]}.html`
+  if(hash == '#!index' || !hash) {
+    url = 'home'+urlExtension
+  } else {
+    let urlFull = hash.split('#!')[1]
+    if(urlFull.includes('?')) {
+       let [urlPre, urlGet] = urlFull.split('?')
+      url = urlPre+urlExtension+'?'+urlGet
+    } else {
+      url = urlFull+urlExtension
+    }
+  }
+
   const insertPromisesDOM = html => {
     let parser = new DOMParser()
     let doc = parser.parseFromString(html, 'text/html')
     if(!loadHash) {
       let selectors = doc.querySelector('[spa-selector]').attributes['spa-selector'].value.split(' ')
-      // selectors.push('title', 'meta[name="description"]');  
 
       selectors.forEach(selectorItem => {
         let docSelectorTEXT = doc.querySelector(selectorItem).innerHTML
@@ -48,17 +61,18 @@ const navegationSPA = (hash, loadHash = false) => {
 }
 
 const activeAnchors = hash => {
-  let allAnchors = document.querySelectorAll(`[href]`)
+  let allAnchors = document.querySelectorAll('[href]')
   allAnchors.forEach(o => {
     o.getAttribute('href') == hash ? o.classList.add('-active') : o.classList.remove('-active')
   })
 };
  
 (function loadHashUrl(loadHash) {
-  location.hash ? loadHash = location.hash : loadHash = '#!index'
+  location.hash.charAt(1) == '!' ? loadHash = location.hash : loadHash = '#!index'
   navegationSPA(loadHash, true)
 })()
 
 window.onhashchange = e => {
+  if(location.hash.charAt(1) == '!')
   navegationSPA(location.hash)
 }
